@@ -64,10 +64,21 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
         {
             Game game = new Game();
 
-            // 2, 5, 8 - zeroes should win.
+            // 2, 5, 8 - zeroes win.
             MakeMoves(game, 1, 2, 3, 5, 7, 8);
 
             Assert.AreEqual(Winner.Zeroes, game.GetWinner());
+        }
+
+        [Test]
+        public void GetWinner_CrossesWinDiagonal_ReturnsCrosses()
+        {
+            Game game = new Game();
+
+            // 1, 5, 9 - crosses win
+            MakeMoves(game, 1, 4, 5, 2, 9);
+
+            Assert.AreEqual(Winner.Crosses, game.GetWinner());
         }
         private void MakeMoves(Game game, params int[] indexes)
         {
