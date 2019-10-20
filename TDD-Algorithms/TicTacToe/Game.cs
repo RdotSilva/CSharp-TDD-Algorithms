@@ -22,6 +22,8 @@ namespace TDD_Algorithms.TicTacToe
             if(GetState(index) != State.Unset)
                 throw new InvalidOperationException();
 
+            _board[index - 1] = MovesCounter % 2 == 0 ? State.Cross : State.Zero;
+
             MovesCounter++;
         }
         private State GetState(int index)
