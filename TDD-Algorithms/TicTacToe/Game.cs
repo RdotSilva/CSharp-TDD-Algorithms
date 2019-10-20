@@ -53,6 +53,9 @@ namespace TDD_Algorithms.TicTacToe
                 }
             }
 
+            if (MovesCounter < 9)
+                return Winner.GameIsUnfinished;
+
             return Winner.Draw;
         }
 

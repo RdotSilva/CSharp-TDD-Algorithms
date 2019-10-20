@@ -80,6 +80,15 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
 
             Assert.AreEqual(Winner.Crosses, game.GetWinner());
         }
+
+        [Test]
+        public void GetWinner_GameIsUnfinished_ReturnsGameIsUnfinished()
+        {
+            Game game = new Game();
+            MakeMoves(game, 1, 2, 3, 4);
+
+            Assert.AreEqual(Winner.GameIsUnfinished, game.GetWinner());
+        }
         private void MakeMoves(Game game, params int[] indexes)
         {
             foreach (var index in indexes)
@@ -93,6 +102,7 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
     {
         Zeroes,
         Crosses,
-        Draw
+        Draw,
+        GameIsUnfinished
     }
 }
