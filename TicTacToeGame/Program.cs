@@ -39,9 +39,12 @@ namespace TicTacToeGame
 
             return sb.ToString();
         }
-
-        
-
-
+        private static string GetPrintableChar(int index)
+        {
+            State state = g.GetState(index);
+            if (state == State.Unset)
+                return index.ToString();
+            return state == State.Cross ? "X" : "O";
+        }
     }
 }
