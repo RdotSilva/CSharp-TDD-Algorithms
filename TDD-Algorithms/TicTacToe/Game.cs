@@ -24,7 +24,10 @@ namespace TDD_Algorithms.TicTacToe
 
             MovesCounter++;
         }
+        private State GetState(int index)
+        {
+            return _board[index - 1];
+        }
 
-        
     }
 }
