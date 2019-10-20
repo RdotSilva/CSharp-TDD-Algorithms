@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
+using TDD_Algorithms.TicTacToe;
 
 namespace TDD_Algorithms.Tests.TicTacToeTests
 {
@@ -41,18 +42,6 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
                 game.MakeMove(1);
                 game.MakeMove(1);
             });
-        }
-    }
-
-    public class Game
-    {
-        public int MovesCounter { get; private set; }
-
-        public void MakeMove(int index)
-        {
-            if (index < 1 || index > 9)
-                throw new ArgumentOutOfRangeException();
-            MovesCounter++;
         }
     }
 }
