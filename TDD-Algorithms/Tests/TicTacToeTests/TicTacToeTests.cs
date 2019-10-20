@@ -36,12 +36,28 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
         [Test]
         public void MoveOnTheSameSquare_ThrowsException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            Assert.Throws<InvalidOperationException>(() =>
             {
                 var game = new Game();
                 game.MakeMove(1);
                 game.MakeMove(1);
             });
+        }
+
+        [Test]
+        public void MakingMoves_SetStateCorrectly()
+        {
+            Game game = new Game();
+            game.MakeMove(1);
+            game.MakeMove(2);
+            game.MakeMove(3);
+            game.MakeMove(4);
+
+            Assert.AreEqual(State.Cross, game.GetState(1));
+            Assert.AreEqual(State.Zero, game.GetState(2));
+            Assert.AreEqual(State.Cross, game.GetState(3));
+            Assert.AreEqual(State.Zero, game.GetState(4));
+
         }
     }
 }
