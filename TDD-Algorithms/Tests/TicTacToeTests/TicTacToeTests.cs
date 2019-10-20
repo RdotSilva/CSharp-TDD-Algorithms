@@ -48,16 +48,21 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
         public void MakingMoves_SetStateCorrectly()
         {
             Game game = new Game();
-            game.MakeMove(1);
-            game.MakeMove(2);
-            game.MakeMove(3);
-            game.MakeMove(4);
+            
+            MakeMoves(game, new []{1, 2, 3, 4});
 
             Assert.AreEqual(State.Cross, game.GetState(1));
             Assert.AreEqual(State.Zero, game.GetState(2));
             Assert.AreEqual(State.Cross, game.GetState(3));
             Assert.AreEqual(State.Zero, game.GetState(4));
+        }
 
+        private void MakeMoves(Game game, params int[] indexes)
+        {
+            foreach (var index in indexes)
+            {
+                game.MakeMove(index);
+            }
         }
     }
 }
