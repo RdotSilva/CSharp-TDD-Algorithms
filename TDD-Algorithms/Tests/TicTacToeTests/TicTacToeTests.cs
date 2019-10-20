@@ -59,6 +59,16 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
             Assert.AreEqual(State.Zero, game.GetState(4));
         }
 
+        [Test]
+        public void GetWinner_ZeroesWinVertically_ReturnsZeroes()
+        {
+            Game game = new Game();
+
+            // 2, 5, 8 - zeroes should win.
+            MakeMoves(game, 1, 2, 3, 5, 7, 8);
+
+            Assert.AreEqual(Winner.Zeroes, game.GetWinner());
+        }
         private void MakeMoves(Game game, params int[] indexes)
         {
             foreach (var index in indexes)
@@ -66,5 +76,12 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
                 game.MakeMove(index);
             }
         }
+    }
+
+    public enum Winner
+    {
+        Zeroes,
+        Crosses,
+        Draw
     }
 }
