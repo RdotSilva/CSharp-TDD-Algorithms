@@ -10,10 +10,12 @@ namespace TDD_Algorithms.Tests.TicTacToeTests
     public class TicTacToeTests
     {
         [Test]
-        public void CreateGame_ZeroMoves()
+        public void CreateGame_GameIsInCorrectState()
         {
             Game game = new Game();
+
             Assert.AreEqual(0, game.MovesCounter);
+            Assert.AreEqual(State.Unset, game.GetState(1));
         }
 
         [Test]
