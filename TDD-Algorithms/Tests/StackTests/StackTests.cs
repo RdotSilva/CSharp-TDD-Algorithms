@@ -33,7 +33,16 @@ namespace TDD_Algorithms.Tests.StackTests
             Assert.Throws<InvalidOperationException>(() => { stack.Pop(); });
         }
 
-        
+        [Test]
+        public void Peek_PushTwoElements_ReturnsHeadItem()
+        {
+            var stack = new MyStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+
+            Assert.AreEqual(2, stack.Peek(2));
+        }
 
     }
 
