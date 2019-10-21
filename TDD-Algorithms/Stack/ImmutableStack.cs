@@ -13,7 +13,7 @@ namespace TDD_Algorithms.Stack
 
             public IStack<T> Pop()
             {
-                throw new NotImplementedException();
+                throw new InvalidOperationException();
             }
 
             public IStack<T> Push(T value)
