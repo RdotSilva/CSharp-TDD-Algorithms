@@ -8,7 +8,7 @@ namespace TDD_Algorithms.Stack
         {
             public T Peek()
             {
-                throw new NotImplementedException();
+                throw new InvalidOperationException();
             }
 
             public IStack<T> Pop()

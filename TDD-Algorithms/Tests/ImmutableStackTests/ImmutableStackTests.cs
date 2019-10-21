@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
 using NUnit.Framework;
@@ -13,6 +14,14 @@ namespace TDD_Algorithms.Tests.ImmutableStackTests
         {
             var emptyStack = ImmutableStack<int>.Empty;
             Assert.IsTrue(emptyStack.IsEmpty);
+        }
+
+        [Test]
+        public void Peek_EmptyStack_ThrowsException()
+        {
+            var emptyStack = ImmutableStack<int>.Empty;
+
+            Assert.Throws<InvalidOperationException>(() => { emptyStack.Peek(); });
         }
 
     }
