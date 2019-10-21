@@ -25,7 +25,14 @@ namespace TDD_Algorithms.Tests.StackTests
             Assert.IsFalse(stack.IsEmpty);
         }
 
-        
+        [Test]
+        public void Pop_EmptyStack_ThrowsException()
+        {
+            var stack = new MyStack<int>();
+
+            Assert.Throws<InvalidOperationException>(() => { stack.Pop(); });
+        }
+
     }
 
     public class MyStack<T>
