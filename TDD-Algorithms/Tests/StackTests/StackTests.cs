@@ -16,4 +16,9 @@ namespace TDD_Algorithms.Tests.StackTests
             Assert.IsTrue(stack.IsEmpty);
         }
     }
+
+    public class MyStack
+    {
+        public bool IsEmpty { get; set; }
+    }
 }
