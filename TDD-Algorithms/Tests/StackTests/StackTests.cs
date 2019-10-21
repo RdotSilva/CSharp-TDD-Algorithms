@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using NUnit.Framework;
 
@@ -41,7 +42,19 @@ namespace TDD_Algorithms.Tests.StackTests
             stack.Push(1);
             stack.Push(2);
 
-            Assert.AreEqual(2, stack.Peek(2));
+            Assert.AreEqual(2, stack.Peek());
+        }
+
+        [Test]
+        public void Peek_PushTwoItemsAndPop_ReturnsHeadElement()
+        {
+            var stack = new MyStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.Pop();
+
+            Assert.AreEqual(1, stack.Peek());
         }
 
     }
@@ -64,9 +77,11 @@ namespace TDD_Algorithms.Tests.StackTests
             {
                 throw new InvalidOperationException();
             }
+
+            _list.RemoveAt(Count - 1);
         }
 
-        public T Peek(int i)
+        public T Peek()
         {
             return _list[Count - 1];
         }
