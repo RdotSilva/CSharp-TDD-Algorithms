@@ -6,8 +6,6 @@ namespace TDD_Algorithms.Stack
     {
         private sealed class EmptyStack : IStack<T>
         {
-            public bool IsEmpty => throw new NotImplementedException();
-
             public T Peek()
             {
                 throw new NotImplementedException();
@@ -22,6 +20,28 @@ namespace TDD_Algorithms.Stack
             {
                 throw new NotImplementedException();
             }
+
+            public bool IsEmpty => true;
         }
+        public T Peek()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IStack<T> Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IStack<T> Push(T value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsEmpty => true;
+
+        private static readonly EmptyStack _empty = new EmptyStack();
+        public static IStack<T> Empty => _empty;
+
     }
 }
