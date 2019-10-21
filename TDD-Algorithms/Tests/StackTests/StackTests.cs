@@ -24,6 +24,8 @@ namespace TDD_Algorithms.Tests.StackTests
             Assert.AreEqual(1, stack.Count);
             Assert.IsFalse(stack.IsEmpty);
         }
+
+        
     }
 
     public class MyStack<T>
@@ -35,6 +37,14 @@ namespace TDD_Algorithms.Tests.StackTests
         public void Push(T value)
         {
             Count++;
+        }
+
+        public void Pop()
+        {
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException();
+            }
         }
     }
 }
