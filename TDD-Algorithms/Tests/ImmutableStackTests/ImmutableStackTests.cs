@@ -25,5 +25,19 @@ namespace TDD_Algorithms.Tests.ImmutableStackTests
             Assert.Throws<InvalidOperationException>(() => { emptyStack.Pop(); });
         }
 
+        [Test]
+        public void PushOnEmptyStackTwoItems_PeekOneElement_ReturnsCorrectValue()
+        {
+            var stack = ImmutableStack<int>.Empty;
+
+            stack = stack.Push(1);
+            stack = stack.Push(2);
+
+            int result = stack.Peek();
+
+            Assert.AreEqual(2, result);
+        }
+
+
     }
 }
