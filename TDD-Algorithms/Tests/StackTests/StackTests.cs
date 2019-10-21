@@ -33,17 +33,20 @@ namespace TDD_Algorithms.Tests.StackTests
             Assert.Throws<InvalidOperationException>(() => { stack.Pop(); });
         }
 
+        
+
     }
 
     public class MyStack<T>
     {
+        private List<T> _list = new List<T>();
         public bool IsEmpty => Count == 0;
 
-        public int Count { get; private set; }
+        public int Count => _list.Count;
 
         public void Push(T value)
         {
-            Count++;
+            _list.Add(value);
         }
 
         public void Pop()
@@ -52,6 +55,11 @@ namespace TDD_Algorithms.Tests.StackTests
             {
                 throw new InvalidOperationException();
             }
+        }
+
+        public T Peek(int i)
+        {
+            return _list[Count - 1];
         }
     }
 }
