@@ -18,14 +18,19 @@ namespace TDD_Algorithms.Stack
 
             public IStack<T> Push(T value)
             {
-                throw new NotImplementedException();
+                return new ImmutableStack<T>(value);
             }
 
             public bool IsEmpty => true;
         }
+
+        private ImmutableStack(T head)
+        {
+            _head = head;
+        }
         public T Peek()
         {
-            throw new NotImplementedException();
+            return _head;
         }
 
         public IStack<T> Pop()
@@ -35,12 +40,14 @@ namespace TDD_Algorithms.Stack
 
         public IStack<T> Push(T value)
         {
-            throw new NotImplementedException();
+            return new ImmutableStack<T>(value);
         }
 
         public bool IsEmpty => true;
 
         private static readonly EmptyStack _empty = new EmptyStack();
+
+        private readonly T _head;
         public static IStack<T> Empty => _empty;
 
     }
