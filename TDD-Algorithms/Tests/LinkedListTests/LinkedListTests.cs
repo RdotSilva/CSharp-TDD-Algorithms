@@ -69,6 +69,13 @@ namespace TDD_Algorithms.Tests.LinkedListTests
         public void RemoveFirst_EmptyList_Throws()
         {
             var list = new MyLinkedList<int>();
+            Assert.Throws<InvalidOperationException>(() => { list.RemoveLast(); });
+        }
+
+        [Test]
+        public void RemoveLast_EmptyList_Throws()
+        {
+            var list = new MyLinkedList<int>();
             Assert.Throws<InvalidOperationException>(() => { list.RemoveFirst(); });
         }
 
@@ -150,6 +157,12 @@ namespace TDD_Algorithms.Tests.LinkedListTests
             {
                 Tail = null;
             }
+        }
+
+        public void RemoveLast()
+        {
+            if (Count == 0)
+                throw new InvalidOperationException();
         }
     }
 
