@@ -24,9 +24,21 @@ namespace TDD_Algorithms.Tests.LinkedListTests
             MyLinkedList<int> list = new MyLinkedList<int>();
             list.AddFirst(1);
 
-            Assert.AreEqual(1, list.Head.Value);
-            Assert.AreEqual(1, list.Tail.Value);
             Assert.AreSame(list.Head, list.Tail);
+        }
+
+        [Test]
+        public void AddFirstTwoElements_ListIsInCorrectState()
+        {
+            var list = new MyLinkedList<int>();
+            list.AddFirst(1);
+            list.AddFirst(2);
+
+            Assert.AreEqual(1, list.Tail.Value);
+            Assert.AreEqual(2, list.Head.Value);
+            Assert.AreEqual(2, list.Count);
+            Assert.AreSame(list.Head.Next, list.Tail);
+            
         }
     }
 
@@ -34,6 +46,7 @@ namespace TDD_Algorithms.Tests.LinkedListTests
     {
         public ListNode<T> Tail { get; private set; }
         public ListNode<T> Head { get; private set; }
+        public int Count { get; set; }
 
         public void AddFirst(T value)
         {
@@ -42,7 +55,22 @@ namespace TDD_Algorithms.Tests.LinkedListTests
 
         private void AddFirst(ListNode<T> node)
         {
-            Tail = Head = node;
+            // Save off the head node so we don't lose it.
+            ListNode<T> temp = Head;
+
+            // Point head to new node.
+            Head = node;
+
+            // Insert the rest of the list behind the head.
+            Head.Next = temp;
+
+            Count++;
+
+            if (Count == 1)
+            {
+                Tail = Head;
+            }
+
         }
     }
 
@@ -55,5 +83,6 @@ namespace TDD_Algorithms.Tests.LinkedListTests
 
         public ListNode<T> Next { get; set; }
         public T Value { get; set; }
+        
     }
 }
