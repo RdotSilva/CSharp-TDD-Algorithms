@@ -20,7 +20,6 @@ namespace TDD_Algorithms.Tests.ImmutableStackTests
         public void PeekAndPop_EmptyStack_ThrowsException()
         {
             var emptyStack = ImmutableStack<int>.Empty;
-
             Assert.Throws<InvalidOperationException>(() => { emptyStack.Peek(); });
             Assert.Throws<InvalidOperationException>(() => { emptyStack.Pop(); });
         }
@@ -29,7 +28,6 @@ namespace TDD_Algorithms.Tests.ImmutableStackTests
         public void PushOnEmptyStackTwoItems_PeekOneElement_ReturnsCorrectValue()
         {
             var stack = ImmutableStack<int>.Empty;
-
             stack = stack.Push(1);
             stack = stack.Push(2);
 
@@ -38,6 +36,14 @@ namespace TDD_Algorithms.Tests.ImmutableStackTests
             Assert.AreEqual(2, result);
         }
 
+        [Test]
+        public void PushOnEmptyStackOneItem_PopOneItem_ReturnsEmptyStack()
+        {
+            var stack = ImmutableStack<int>.Empty;
+            stack = stack.Push(1);
+            var result = stack.Pop();
 
+            Assert.IsTrue(result.IsEmpty);
+        }
     }
 }
