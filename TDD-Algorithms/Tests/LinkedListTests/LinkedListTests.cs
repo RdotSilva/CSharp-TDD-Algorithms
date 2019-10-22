@@ -93,6 +93,20 @@ namespace TDD_Algorithms.Tests.LinkedListTests
         }
 
         [Test]
+        public void RemoveLast_TwoElements_ListIsInCorrectState()
+        {
+            var list = new MyLinkedList<int>();
+            list.AddLast(1);
+            list.AddLast(2);
+
+            list.RemoveLast();
+
+            Assert.AreEqual(1, list.Head.Value);
+
+            Assert.AreEqual(1, list.Count);
+            Assert.AreSame(list.Head, list.Tail);
+        }
+        [Test]
         public void RemoveFirst_OneElement_ListIsInCorrectState()
         {
             var list = new MyLinkedList<int>();
@@ -174,12 +188,29 @@ namespace TDD_Algorithms.Tests.LinkedListTests
 
         public void RemoveLast()
         {
-            if (Count == 0)
+            if (Count == 1)
                 throw new InvalidOperationException();
+            if (Count == 1)
+            {
+                Head = null;
+                Tail = null;
+            }
+            else
+            {
+                // Before: Head -> 3 -> 5 -> 7
+                //         Tail = 7
+                // After:  Head -> 3 -> 5 -> null
+                //         Tail = 5
+                ListNode<T> current = Head;
+                while (current.Next != Tail)
+                {
+                    current = current.Next;
+                }
 
-            Head = null;
-            Tail = null;
-
+                current.Next = null;
+                Tail = current;
+            }
+            
             Count--;
         }
     }
