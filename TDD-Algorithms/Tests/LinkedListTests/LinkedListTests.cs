@@ -51,6 +51,19 @@ namespace TDD_Algorithms.Tests.LinkedListTests
             Assert.AreEqual(1, list.Tail.Value);
             Assert.AreSame(list.Head, list.Tail);
         }
+
+        [Test]
+        public void AddLastTwoElements_ListIsInCorrectState()
+        {
+            var list = new MyLinkedList<int>();
+            list.AddLast(1);
+            list.AddLast(2);
+
+            Assert.AreEqual(1, list.Head.Value);
+            Assert.AreEqual(2, list.Tail.Value);
+            Assert.AreEqual(2, list.Count);
+            Assert.AreSame(list.Head.Next, list.Tail);
+        }
     }
 
     public class MyLinkedList<T>
@@ -91,7 +104,17 @@ namespace TDD_Algorithms.Tests.LinkedListTests
 
         private void AddLast(ListNode<T> node)
         {
-            Head = Tail = node;
+            if (Count == 0)
+            {
+                Head = node;
+            }
+            else
+            {
+                Tail.Next = node;
+            }
+
+            Tail = node;
+            Count++;
         }
     }
 
