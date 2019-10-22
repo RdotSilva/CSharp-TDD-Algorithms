@@ -80,6 +80,19 @@ namespace TDD_Algorithms.Tests.LinkedListTests
         }
 
         [Test]
+        public void RemoveLast_OneElement_ListIsInCorrectState()
+        {
+            var list = new MyLinkedList<int>();
+            list.AddFirst(1);
+
+            list.RemoveLast();
+
+            Assert.IsNull(list.Head);
+            Assert.IsNull(list.Tail);
+            Assert.AreEqual(0, list.Count);
+        }
+
+        [Test]
         public void RemoveFirst_OneElement_ListIsInCorrectState()
         {
             var list = new MyLinkedList<int>();
@@ -163,6 +176,11 @@ namespace TDD_Algorithms.Tests.LinkedListTests
         {
             if (Count == 0)
                 throw new InvalidOperationException();
+
+            Head = null;
+            Tail = null;
+
+            Count--;
         }
     }
 
