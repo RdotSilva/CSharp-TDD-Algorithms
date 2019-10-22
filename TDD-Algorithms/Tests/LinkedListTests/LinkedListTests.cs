@@ -71,6 +71,19 @@ namespace TDD_Algorithms.Tests.LinkedListTests
             var list = new MyLinkedList<int>();
             Assert.Throws<InvalidOperationException>(() => { list.RemoveFirst(); });
         }
+
+        [Test]
+        public void RemoveFirst_OneElement_ListIsInCorrectState()
+        {
+            var list = new MyLinkedList<int>();
+            list.AddFirst(1);
+
+            list.RemoveFirst();
+
+            Assert.IsNull(list.Head);
+            Assert.IsNull(list.Tail);
+            Assert.AreEqual(0, list.Count);
+        }
     }
 
     public class MyLinkedList<T>
@@ -128,6 +141,15 @@ namespace TDD_Algorithms.Tests.LinkedListTests
         {
             if (Count == 0)
                 throw new InvalidOperationException();
+
+            Head = Head.Next;
+
+            Count--;
+
+            if (Count == 0)
+            {
+                Tail = null;
+            }
         }
     }
 
